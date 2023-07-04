@@ -1,17 +1,16 @@
-# resolveFinderAlias
+# rfa
 
-A small command line utility for the Mac that outputs the file paths encoded by
-Finder aliases.
+A small command line utility for the Mac that resolves Finder aliases.
 
-To use `resolveFinderAlias`, invoke it at the command line with one or more file paths as in:
+To use `rfa`, invoke it at the command line with one or more file paths:
 ```sh
-resolveFinderAlias file...
+rfa file...
 ```
 For each provided file path, if the path represents a Finder alias,
-`resolveFinderAlias` will output the file path encoded by the alias;
+`rfa` will output the file path encoded by the alias;
 otherwise it outputs the full path for the provided path.
 
-You can compile `resolveFinderAlias` with Clang using the following command:
+You can compile `rfa` with Clang using the following command:
 ```sh
-clang -framework Foundation main.m -o resolveFinderAlias
+clang -framework Foundation main.m -o rfa
 ```

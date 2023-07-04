@@ -1,6 +1,6 @@
 #include <Foundation/Foundation.h>
 
-#define PROGRAM_NAME "resolveFinderAlias"
+#define PROGRAM_NAME "rfa"
 #define USAGE "usage: " PROGRAM_NAME " file...\n"
 
 int main(int argc, char *argv[])
