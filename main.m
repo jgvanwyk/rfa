@@ -11,29 +11,18 @@ int main(int argc, char *argv[])
 
     if (argc <= 1) {
         fprintf(stderr, USAGE);
-        exit(EXIT_FAILURE);
+        return 1;
     }
 
     while (--argc > 0) {
-        sourcePath = [NSString stringWithUTF8String:*++argv];
+        sourcePath = [NSString stringWithCString:*++argv encoding:[NSString defaultCStringEncoding]];
         sourceURL = [NSURL fileURLWithPath:sourcePath];
         targetURL = [NSURL URLByResolvingAliasFileAtURL:sourceURL options:0 error:&error];
-
         if (error) {
-            fprintf(stderr, PROGRAM_NAME ": %s\n", error.localizedDescription.UTF8String);
-
-            [sourcePath release];
-            [sourceURL release];
-            [error release];
-
-            exit(error.code);
+            fprintf(stderr, PROGRAM_NAME ": %s\n", [error.localizedDescription cStringUsingEncoding:[NSString defaultCStringEncoding]]);
+            return error.code;
         }
-
-        printf("%s\n", targetURL.path.UTF8String);
-
-        [sourcePath release];
-        [sourceURL release];
-        [targetURL release];
+        printf("%s\n", [targetURL.path cStringUsingEncoding:[NSString defaultCStringEncoding]]);
     }
 
     return 0;
