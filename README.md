@@ -12,5 +12,5 @@ otherwise it outputs the full path for the provided path.
 
 You can compile `rfa` with Clang using the following command:
 ```sh
-clang -framework Foundation main.m -o rfa
+clang -framework CoreFoundation main.m -o rfa
 ```
